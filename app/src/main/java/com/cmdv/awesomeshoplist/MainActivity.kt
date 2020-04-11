@@ -6,14 +6,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
-
-	private lateinit var appBarConfiguration: AppBarConfiguration
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -28,19 +25,12 @@ class MainActivity : AppCompatActivity() {
 		}
 		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 		val navView: NavigationView = findViewById(R.id.nav_view)
-		// Passing each menu ID as a set of Ids because each
-		// menu should be considered as top level destinations.
-		appBarConfiguration = AppBarConfiguration(
-			setOf(
-				R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-			), drawerLayout
-		)
-
 		val drawerToggle = ActionBarDrawerToggle(
 			this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
 		)
 		drawerToggle.syncState()
 		drawerLayout.addDrawerListener(drawerToggle)
+
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu): Boolean {
