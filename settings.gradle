@@ -1,2 +1,6 @@
 rootProject.name='Awesome Shop List'
 include ':app'
+include ':core'
+include ':components'
+include ':data'
+include ':domain'
