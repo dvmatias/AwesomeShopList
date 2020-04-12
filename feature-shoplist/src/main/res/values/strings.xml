@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Awesome Shop List</string>
+
 	<string name="navigation_drawer_open">Open navigation drawer</string>
 	<string name="navigation_drawer_close">Close navigation drawer</string>
 	<string name="nav_header_title">Android Studio</string>
@@ -12,4 +13,5 @@
 	<string name="menu_slideshow">Slideshow</string>
 
 	<string name="home_second">Home Second</string>
+
 </resources>

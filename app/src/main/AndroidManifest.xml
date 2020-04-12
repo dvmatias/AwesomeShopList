@@ -12,7 +12,7 @@
 		android:theme="@style/AppTheme"
 		android:fullBackupContent="false">
 		<activity
-			android:name=".MainActivity"
+			android:name="com.cmdv.feature.shoplist.ui.ShopListActivity"
 			android:label="@string/app_name"
 			android:theme="@style/AppTheme.NoActionBar">
 			<intent-filter>
