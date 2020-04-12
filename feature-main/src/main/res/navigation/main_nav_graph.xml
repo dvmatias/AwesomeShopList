@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main_nav_graph"
+	app:startDestination="@id/shopListListFragment">
+
+	<!-- FEATURE SEARCH NAV GRAPH -->
+	<include app:graph="@navigation/search_nav_graph" />
+
+	<!-- Shop List List Fragment -->
+	<fragment
+		android:id="@+id/shopListListFragment"
+		android:name="com.cmdv.feature.main.ui.shoplistlist.ShopListListFragment"
+		android:label="fragment_shop_list_list"
+		tools:layout="@layout/fragment_shop_list_list" >
+		<action
+			android:id="@+id/action_shopListListFragment_to_shopListDetailFragment"
+			app:destination="@id/shopListDetailFragment" />
+		<action
+			android:id="@+id/action_shopListListFragment_to_createShopListFragment"
+			app:destination="@id/createShopListFragment" />
+		<action
+			android:id="@+id/action_shopListListFragment_to_main_nav_graph"
+			app:destination="@id/main_nav_graph" />
+		<action
+			android:id="@+id/action_shopListListFragment_to_search_nav_graph"
+			app:destination="@id/search_nav_graph" />
+	</fragment>
+
+	<!-- Shop List Detail Fragment -->
+	<fragment
+		android:id="@+id/shopListDetailFragment"
+		android:name="com.cmdv.feature.main.ui.shoplistdetail.ShopListDetailFragment"
+		android:label="fragment_shop_list_detail"
+		tools:layout="@layout/fragment_shop_list_detail" />
+
+	<!-- Create Shop List List -->
+	<fragment
+		android:id="@+id/createShopListFragment"
+		android:name="com.cmdv.feature.main.ui.createshoplist.CreateShopListFragment"
+		android:label="fragment_create_shop_list"
+		tools:layout="@layout/fragment_create_shop_list" />
+
+</navigation>
