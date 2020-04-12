@@ -11,7 +11,7 @@
 	<!-- Shop List List Fragment -->
 	<fragment
 		android:id="@+id/shopListListFragment"
-		android:name="com.cmdv.feature.main.ui.shoplistlist.ShopListListFragment"
+		android:name="com.cmdv.feature.main.ui.shoplistlistfragment.ShopListListFragment"
 		android:label="fragment_shop_list_list"
 		tools:layout="@layout/fragment_shop_list_list" >
 		<action
@@ -31,14 +31,14 @@
 	<!-- Shop List Detail Fragment -->
 	<fragment
 		android:id="@+id/shopListDetailFragment"
-		android:name="com.cmdv.feature.main.ui.shoplistdetail.ShopListDetailFragment"
+		android:name="com.cmdv.feature.main.ui.shoplistdetailfragment.ShopListDetailFragment"
 		android:label="fragment_shop_list_detail"
 		tools:layout="@layout/fragment_shop_list_detail" />
 
 	<!-- Create Shop List List -->
 	<fragment
 		android:id="@+id/createShopListFragment"
-		android:name="com.cmdv.feature.main.ui.createshoplist.CreateShopListFragment"
+		android:name="com.cmdv.feature.main.ui.createshoplistfragment.CreateShopListFragment"
 		android:label="fragment_create_shop_list"
 		tools:layout="@layout/fragment_create_shop_list" />
 

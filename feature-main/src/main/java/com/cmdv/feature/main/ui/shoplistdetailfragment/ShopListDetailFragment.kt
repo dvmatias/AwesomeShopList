@@ -1,4 +1,4 @@
-package com.cmdv.feature.main.ui.shoplistlist
+package com.cmdv.feature.main.ui.shoplistdetailfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,15 +9,15 @@ import android.view.ViewGroup
 import com.cmdv.feature.R
 
 /**
- * A simple [Fragment] subclass.
+ * TODO
  */
-class ShopListListFragment : Fragment() {
+class ShopListDetailFragment : Fragment() {
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
-		return inflater.inflate(R.layout.fragment_shop_list_list, container, false)
+		return inflater.inflate(R.layout.fragment_shop_list_detail, container, false)
 	}
 
 }

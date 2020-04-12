@@ -1,4 +1,4 @@
-package com.cmdv.feature.main.ui.createshoplist
+package com.cmdv.feature.main.ui.createshoplistfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

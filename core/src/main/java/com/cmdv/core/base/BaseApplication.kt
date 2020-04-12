@@ -3,6 +3,7 @@ package com.cmdv.core.base
 import android.app.Application
 import com.cmdv.core.base.di.BaseComponent
 import com.cmdv.core.base.di.BaseModule
+import com.cmdv.core.base.di.DaggerBaseComponent
 
 abstract class BaseApplication : Application() {
 
@@ -12,14 +13,14 @@ abstract class BaseApplication : Application() {
 
 	override fun onCreate() {
 		super.onCreate()
-//		initInjector()
+		initInjector()
 	}
 
 	private fun initInjector() {
-//		baseComponent = DaggerBaseComponent
-//			.builder()
-//			.baseModule(BaseModule(this))
-//			.build()
+		baseComponent = DaggerBaseComponent
+			.builder()
+			.baseModule(BaseModule(this))
+			.build()
 	}
 
 }
