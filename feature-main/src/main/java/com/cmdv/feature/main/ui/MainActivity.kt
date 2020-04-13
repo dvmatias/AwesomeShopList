@@ -1,6 +1,8 @@
 package com.cmdv.feature.main.ui
 
+import android.os.Build
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.View
 import android.widget.FrameLayout
@@ -27,6 +29,11 @@ class MainActivity :
 			MainActivitySubComponent>(),
 	MainActivityContract.View {
 
+	private lateinit var drawerLayout: DrawerLayout
+	private lateinit var navView: NavigationView
+	private lateinit var mainContent: FrameLayout
+	private lateinit var toolbar: Toolbar
+
 	private lateinit var appBarConfiguration: AppBarConfiguration
 
 	override fun bindComponent(): MainActivitySubComponent =
@@ -38,35 +45,29 @@ class MainActivity :
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		val toolbar: Toolbar = findViewById(R.id.toolbar)
-		setSupportActionBar(toolbar)
+		drawerLayout = findViewById(R.id.drawer_layout)
+		navView = findViewById(R.id.nav_view)
+		mainContent = findViewById(R.id.main_content)
+		toolbar = findViewById(R.id.toolbar)
 
-		val fab: FloatingActionButton = findViewById(R.id.fab)
-		fab.setOnClickListener { view ->
-			Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-				.setAction("Action", null).show()
-		}
-		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-		val navView: NavigationView = findViewById(R.id.nav_view)
-		val mainContent: FrameLayout = findViewById(R.id.main_content)
-		val navController = findNavController(R.id.main_nav_host_fragment)
+		setSupportActionBar(toolbar)
+		setupDrawerLayout()
+
 		appBarConfiguration = AppBarConfiguration(
 			setOf(
 				R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
 			), drawerLayout
 		)
+		val navController = findNavController(R.id.main_nav_host_fragment)
 		navView.setupWithNavController(navController)
 
-		val drawerToggle = object : ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.acc_drawer_open, R.string.acc_drawer_close) {
-			override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-				super.onDrawerSlide(drawerView, slideOffset)
-				val moveFactor: Float = navView.width * slideOffset
-				mainContent.translationX = moveFactor
-			}
-		}
 
-		drawerLayout.addDrawerListener(drawerToggle)
-		drawerToggle.syncState()
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			val decor = window.decorView
+			decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+		}
 	}
 
 	override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -78,6 +79,25 @@ class MainActivity :
 	override fun onSupportNavigateUp(): Boolean {
 		val navController = findNavController(R.id.main_nav_host_fragment)
 		return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+	}
+
+	private fun setupDrawerLayout() {
+		val displayMetrics = DisplayMetrics()
+		windowManager.defaultDisplay.getMetrics(displayMetrics)
+		val params = navView.layoutParams as DrawerLayout.LayoutParams
+		params.width = (displayMetrics.widthPixels * 0.8).toInt()
+		navView.layoutParams = params
+
+		val drawerToggle = object : ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.acc_drawer_open, R.string.acc_drawer_close) {
+			override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+				super.onDrawerSlide(drawerView, slideOffset)
+				val moveFactor: Float = navView.width * slideOffset
+				mainContent.translationX = moveFactor
+			}
+		}
+
+		drawerLayout.addDrawerListener(drawerToggle)
+		drawerToggle.syncState()
 	}
 
 }
