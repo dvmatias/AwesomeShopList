@@ -3,22 +3,15 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
-		android:id="@+id/app_bar_search"
+		android:id="@+id/action_search"
 		android:icon="@drawable/ic_search_24dp"
 		android:title="@string/action_search"
-		app:actionViewClass="android.widget.SearchView"
 		app:showAsAction="ifRoom" />
 
 	<item
-		android:id="@+id/app_bar_add"
+		android:id="@+id/action_add"
 		android:icon="@drawable/ic_add_24dp"
 		android:title="@string/action_add"
 		app:showAsAction="ifRoom" />
 
-	<item
-		android:id="@+id/action_settings"
-		android:icon="@drawable/ic_more_vert_black_24dp"
-		android:orderInCategory="100"
-		android:title="@string/action_settings"
-		app:showAsAction="ifRoom" />
 </menu>

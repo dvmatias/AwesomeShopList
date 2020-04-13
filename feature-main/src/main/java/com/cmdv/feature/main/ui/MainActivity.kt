@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -17,9 +18,7 @@ import com.cmdv.core.base.mvp.BaseActivity
 import com.cmdv.feature.R
 import com.cmdv.feature.main.di.mainactivity.MainActivityModule
 import com.cmdv.feature.main.di.mainactivity.MainActivitySubComponent
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity :
@@ -33,8 +32,6 @@ class MainActivity :
 	private lateinit var navView: NavigationView
 	private lateinit var mainContent: FrameLayout
 	private lateinit var toolbar: Toolbar
-
-	private lateinit var appBarConfiguration: AppBarConfiguration
 
 	override fun bindComponent(): MainActivitySubComponent =
 		MainUiComponent.component.plus(MainActivityModule())
@@ -53,16 +50,6 @@ class MainActivity :
 		setSupportActionBar(toolbar)
 		setupDrawerLayout()
 
-		appBarConfiguration = AppBarConfiguration(
-			setOf(
-				R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
-			), drawerLayout
-		)
-		val navController = findNavController(R.id.main_nav_host_fragment)
-		navView.setupWithNavController(navController)
-
-
-
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 			val decor = window.decorView
 			decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
@@ -76,9 +63,16 @@ class MainActivity :
 		return true
 	}
 
-	override fun onSupportNavigateUp(): Boolean {
-		val navController = findNavController(R.id.main_nav_host_fragment)
-		return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+	override fun onOptionsItemSelected(item: MenuItem): Boolean {
+		when (item.itemId) {
+			R.id.action_add -> {
+				showToast("Add shop list")
+			}
+			R.id.action_search -> {
+				showToast("Search shop list")
+			}
+		}
+		return super.onOptionsItemSelected(item)
 	}
 
 	private fun setupDrawerLayout() {

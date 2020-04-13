@@ -1,6 +1,7 @@
 package com.cmdv.core.base.mvp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cmdv.core.base.di.ViewComponent
 import javax.inject.Inject
@@ -39,6 +40,10 @@ abstract class BaseActivity<in V : BaseContract.View, P : BaseContract.Presenter
 	override fun onDestroy() {
 		super.onDestroy()
 		presenter.destroy()
+	}
+
+	protected fun showToast(msg: String) {
+		Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 	}
 
 }
