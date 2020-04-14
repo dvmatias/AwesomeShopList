@@ -5,6 +5,7 @@ import android.content.Context
 import com.cmdv.core.base.di.coroutineDispatcher.CoroutinesModule
 import com.cmdv.core.base.di.network.NetworkModule
 import com.cmdv.core.base.di.storage.StorageModule
+import com.cmdv.core.navigator.Navigator
 import dagger.Component
 import javax.inject.Singleton
 
@@ -22,5 +23,7 @@ interface BaseComponent {
 	fun application(): Application
 
 	fun context(): Context
+
+	fun navigator(): Navigator
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cmdv.core.base.di.ViewComponent
+import com.cmdv.core.navigator.Navigator
 import javax.inject.Inject
 
 val ROOT: Nothing? = null
@@ -12,6 +13,9 @@ abstract class BaseActivity<in V : BaseContract.View, P : BaseContract.Presenter
 
 	@Inject
 	protected lateinit var presenter: P
+
+	@Inject
+	protected lateinit var navigator: Navigator
 
 	protected abstract fun bindComponent(): C
 

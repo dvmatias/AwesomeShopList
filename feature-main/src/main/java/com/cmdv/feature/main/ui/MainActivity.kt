@@ -66,7 +66,7 @@ class MainActivity :
 	override fun onOptionsItemSelected(item: MenuItem): Boolean {
 		when (item.itemId) {
 			R.id.action_add -> {
-				showToast("Add shop list")
+				navigator.toAddShopListScreen(activityOrigin = this, bundle = null, options = null, finish = false)
 			}
 			R.id.action_search -> {
 				showToast("Search shop list")
